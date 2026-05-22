@@ -28,37 +28,36 @@ function Home() {
     <div>
       <div className="home-hero">
         <p className="home-hero-label">Curated Collection</p>
-        <h1 className="home-hero-title">
-          Stories that<br /><em>move the soul</em>
-        </h1>
-        <p className="home-hero-sub">
-          Handpicked books for the curious mind. Free delivery on all orders.
-        </p>
+        <h1 className="home-hero-title">Stories that<br /><em>move the soul</em></h1>
+        <p className="home-hero-sub">Handpicked books for the curious mind. Free delivery on all orders.</p>
         <div className="divider"></div>
       </div>
 
-      <div className="books-grid">
-        {books.map(book => (
-          <div className="book-card" key={book.id}>
-            <div className="book-spine" style={{ background: book.color }}>
-              <span className="book-spine-letter">{book.title[0]}</span>
-              <span className="book-genre-tag">{book.genre}</span>
-            </div>
-            <div className="book-info">
-              <h3 className="book-title">{book.title}</h3>
-              <p className="book-author">by {book.author}</p>
-              <div className="book-footer">
-                <span className="book-price">${book.price}</span>
-                <button
-                  className={`btn-add-cart${added[book.id] ? ' added' : ''}`}
-                  onClick={() => addToCart(book)}
-                >
-                  {added[book.id] ? '✓ Added' : '+ Cart'}
-                </button>
+      <div className="container pb-5">
+        <div className="row g-4">
+          {books.map(book => (
+            <div className="col-12 col-sm-6 col-md-4" key={book.id}>
+              <div className="book-card h-100">
+                <div className="book-spine" style={{ background: book.color }}>
+                  <span className="book-spine-letter">{book.title[0]}</span>
+                  <span className="book-genre-tag">{book.genre}</span>
+                </div>
+                <div className="book-info">
+                  <h3 className="book-title">{book.title}</h3>
+                  <p className="book-author">by {book.author}</p>
+                  <div className="book-footer">
+                    <span className="book-price">${book.price}</span>
+                    <button
+                      className={`btn-add-cart${added[book.id] ? ' added' : ''}`}
+                      onClick={() => addToCart(book)}>
+                      {added[book.id] ? '✓ Added' : '+ Cart'}
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
